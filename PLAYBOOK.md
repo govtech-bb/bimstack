@@ -422,7 +422,7 @@ research. Recommend whether we're ready to widen the cohort.
 Before public beta, mandatory:
 
 - Independent penetration test (cyber engineer plans, external supplier executes)
-- Full WCAG 2.1 AA accessibility audit
+- Full WCAG 2.2 AA accessibility audit
 - Performance test at twice the expected peak load
 - Incident runbook tested via a tabletop exercise
 - Operational handover to whoever runs the live service

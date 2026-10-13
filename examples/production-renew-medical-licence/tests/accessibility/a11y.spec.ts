@@ -1,7 +1,7 @@
 /**
  * Accessibility audit – axe-core against every page
  *
- * WCAG 2.1 AA is the floor (Standard 3 – everyone can use it). Anything below
+ * WCAG 2.2 AA is the floor (Standard 3 – everyone can use it). Anything below
  * AA fails the build. This suite runs axe on every page in its default state,
  * then on key error and interactive states.
  *
@@ -10,8 +10,15 @@
  * Anchors: Standard 3 (everyone can use it)
  */
 
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+
+// axe leaves `target-size` (2.5.8) off by default. `.options()` replaces any
+// options set before it, so it must come before `.withTags()`.
+const axe = (page: Page) =>
+  new AxeBuilder({ page })
+    .options({ rules: { 'target-size': { enabled: true } } })
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']);
 
 const pages = [
   { url: '/', name: 'Start' },
@@ -25,13 +32,12 @@ const pages = [
   { url: '/confirmation.html', name: 'Confirmation' },
 ];
 
-test.describe('WCAG 2.1 AA – every page, default state', () => {
+test.describe('WCAG 2.2 AA – every page, default state', () => {
   for (const { url, name } of pages) {
     test(`${name} page has no axe violations`, async ({ page }) => {
       await page.goto(url);
 
-      const results = await new AxeBuilder({ page })
-        .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+      const results = await axe(page)
         .analyze();
 
       // If this fails, run `npm run a11y -- --reporter=html` for a readable report.
@@ -41,13 +47,12 @@ test.describe('WCAG 2.1 AA – every page, default state', () => {
   }
 });
 
-test.describe('WCAG 2.1 AA – interactive states', () => {
+test.describe('WCAG 2.2 AA – interactive states', () => {
   test('Context page passes axe with each option selected', async ({ page }) => {
     await page.goto('/context.html');
     for (const option of ['actively practising', 'working abroad temporarily', 'retired or only practising occasionally']) {
       await page.getByRole('radio', { name: new RegExp(option, 'i') }).check();
-      const results = await new AxeBuilder({ page })
-        .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+      const results = await axe(page)
         .analyze();
       expect(results.violations, `axe violations with "${option}" selected: ${JSON.stringify(results.violations, null, 2)}`).toEqual([]);
     }
@@ -56,7 +61,7 @@ test.describe('WCAG 2.1 AA – interactive states', () => {
   test('CPD page passes axe with "What counts as CPD?" expanded', async ({ page }) => {
     await page.goto('/cpd.html');
     await page.getByText(/What counts as CPD\?/).click();
-    const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
+    const results = await axe(page).analyze();
     expect(results.violations, JSON.stringify(results.violations, null, 2)).toEqual([]);
   });
 });

@@ -112,7 +112,7 @@ bimstack is opinionated. These are the defaults. Document any departure as an AD
 | Licence | MIT or OGL. Justify anything else. | Standard 9 |
 | Analytics | The four GDS baseline metrics from day one. Privacy-preserving (no PII). | Standard 13 |
 | Form validation | Client-side following the design system pattern (error summary + inline). Server-side mirrors it. Always `novalidate` on `<form>`. | Standard 3 and 5 |
-| Accessibility | WCAG 2.1 AA, tested with assistive tech. Not negotiable. | Standard 3 |
+| Accessibility | WCAG 2.2 AA, tested with assistive tech. Not negotiable. | Standard 3 |
 | Internet weight | Under 100KB on first paint where possible. Never over 250KB without a written reason. | Standard 3 (low-data citizens) |
 | Documentation | README, setup, runbook, ADRs, in the repo | Standard 8 |
 

@@ -1,13 +1,13 @@
 ---
 name: design-review
-description: Review a design against the Barbados Digital Service Standards and WCAG 2.1 AA accessibility, and return a triaged verdict – Fix now, Fix later, Confirm with MDA. Use when checking a live HTML prototype or a Figma design for design system conformance and accessibility before it ships or goes to stakeholders. Triggers on "design review", "review this design", "review this prototype", "review this screen", "accessibility check", "does this meet WCAG", "check this against the standards", "is this accessible", "review this page".
+description: Review a design against the Barbados Digital Service Standards and the GovBB accessibility standard, and return a triaged verdict – Fix now, Fix later, Confirm with MDA. Use when checking a live HTML prototype or a Figma design for design system conformance and accessibility before it ships or goes to stakeholders. Triggers on "design review", "review this design", "review this prototype", "review this screen", "accessibility check", "does this meet WCAG", "check this against the standards", "is this accessible", "review this page".
 ---
 
 # Design Review
 
-This skill reviews a design – a live HTML prototype, or a Figma page or component – against the Barbados Digital Service Standards and WCAG 2.1 AA, and returns a triaged verdict. It reviews and reports; it does not change the design.
+This skill reviews a design – a live HTML prototype, or a Figma page or component – against the Barbados Digital Service Standards and the WCAG version and level on the Design System accessibility page, and returns a triaged verdict. It reviews and reports; it does not change the design.
 
-It anchors to Standard 3 (everyone can use the service): WCAG 2.1 AA is the floor, and building on the design system is how a service stays usable for every Barbadian. It also checks Standard 7 (reuse over rebuild) through component conformance.
+It anchors to Standard 3 (everyone can use the service): the WCAG version and level named on the [Design System accessibility page](https://design-system.service.alpha.gov.bb/documentation/accessibility/) is the floor, and building on the design system is how a service stays usable for every Barbadian. It also checks Standard 7 (reuse over rebuild) through component conformance.
 
 It reviews the **visual and accessible** layer specifically. It does not re-check copy – that is `plain-language-check` – and it does not assess the whole service against all thirteen Standards – that is `service-standard-assessment`. It sits between them: the design in front of you, judged against the concrete rules.
 
@@ -59,7 +59,7 @@ The same holds for the five user-set tokens and any value the guide marks as del
 
 - Reviewing a Figma page or component before handoff
 - Reviewing a rendered screen or prototype before user testing or release
-- Running an accessibility pass against WCAG 2.1 AA
+- Running an accessibility pass against the GovBB accessibility standard
 - Checking a design uses the system – tokens, components, spacing – rather than bespoke styling
 
 ---
@@ -76,16 +76,23 @@ Go through each, and for every finding note the Standard or the WCAG criterion b
 - **Component reuse** – on Figma, linked instances of real, present components (check the `scope_guard`), not detached copies; on HTML, the `govbb-` classes and DS components, not bespoke CSS or inlined styles. A detached instance or a bespoke reimplementation is a finding.
 - **States** – interactive elements show their real states (a form field has its error state, not just default).
 
-### Accessibility (Standard 3, WCAG 2.1 AA)
+### Accessibility (Standard 3)
+
+Check the [Design System accessibility page](https://design-system.service.alpha.gov.bb/documentation/accessibility/) before the pass, and review against the version and level it names. The checklist below covers WCAG 2.2 AA. If the page names a newer version, also check that version's new criteria and say so in the verdict.
 
 On a rendered page, run an automated accessibility checker (for example axe) over the DOM as the first pass, then check by hand what automation cannot see. Automation catches roughly a third of WCAG; the manual pass carries the rest – focus order, meaning, alternatives, and whether a control is actually reachable. On a Figma design there is no DOM to run against, so these are inferred from the tokens and layout and are weaker – say which you did.
 
 - **Contrast** – text meets 4.5:1 (WCAG 1.4.3); non-text and focus indicators meet 3:1 (1.4.11). Measure; do not eyeball. Reconcile against A1 to A3 first.
 - **Focus visibility** – every interactive element has a visible focus state (2.4.7).
+- **Focus not hidden** – a focused element is not fully covered by a sticky header, footer or banner (2.4.11).
 - **Target size** – interactive targets are large enough (2.5.8).
+- **Dragging** – anything done by dragging can also be done with a single tap or click (2.5.7).
 - **Text alternatives** – icons and images that carry meaning have them (1.1.1). The Select chevron and similar icon fills should not be the only signal.
 - **Forced colours** – check the A4 pattern (checkbox and radio marks, back-button arrow, select chevron) survives Windows High Contrast. Recorded as deferred – report under Fix later.
 - **Meaning not by colour alone** – errors and states are not signalled by colour only (1.4.1).
+- **Consistent help** – help, contact details or a support link sit in the same place on every page that has them (3.2.6).
+- **No re-entering** – the journey does not ask for something the user has already given; it fills it in or lets them pick it (3.3.7).
+- **Accessible sign-in** – signing in does not depend on remembering or solving something, such as a puzzle, unless there is another way. Paste and password managers work (3.3.8).
 
 ---
 
@@ -103,7 +110,7 @@ Every finding lands in exactly one bucket. The bucket is the point – it tells 
 # Design review – [page, component, or screen]
 
 **Reviewed:** [what, and the Figma node or screen source]
-**Against:** Barbados Digital Service Standards, WCAG 2.1 AA, GOV.BB design system
+**Against:** Barbados Digital Service Standards, the WCAG version and level on the Design System accessibility page, GOV.BB design system
 **Read on:** YYYY-MM-DD
 **Evidence from:** component-spec [nodes], token-cross-check [if used]
 

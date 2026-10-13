@@ -103,7 +103,7 @@ A pocket version. Read `references/barbados-service-standards.md` for the full p
 |---|---|
 | 1 | At least 5 user interviews per major round of work, transcripts, named user needs, evidence of iteration based on them |
 | 2 | Service designer, content/interaction designer, researcher, developer, delivery manager, subject-matter expert all named and reachable; senior decision-maker engaged |
-| 3 | WCAG 2.1 AA tested, assisted-digital path designed, low-data tested, under-represented users researched with |
+| 3 | Tested against the WCAG version and level on the Design System accessibility page, assisted-digital path designed, low-data tested, under-represented users researched with |
 | 4 | Reading-age check passed, swap list applied, plain-language testing with citizens documented |
 | 5 | Usability testing with a meaningful number of unaided completions, one-thing-per-page, clear errors and confirmation |
 | 6 | Technology choice justified against cost / scale / accessibility / openness, MIST consulted, design system in use |

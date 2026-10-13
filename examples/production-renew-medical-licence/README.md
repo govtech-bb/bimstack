@@ -99,7 +99,7 @@ See `PRODUCTION-READINESS.md` for the full Standards-anchored assessment and the
 
 **E2E regression (Playwright)** – three specs covering the most common citizen journey, the most-different alternative path, and the error states. Tests use accessible selectors (role + name) so failures double as accessibility regressions.
 
-**Accessibility (axe-core)** – one suite running WCAG 2.2 AA across every page in its default state, plus interactive states (each radio option, expanded disclosures). Anything below AA fails the build. Standard 3 floor.
+**Accessibility (axe-core)** – one suite checking every page, in its default state and in interactive states (each radio option, expanded disclosures), against the WCAG version and level on the [Design System accessibility page](https://design-system.service.alpha.gov.bb/documentation/accessibility/). Anything below that fails the build. Standard 3 floor.
 
 **Security (Playwright + bash)** – header policy enforced: CSP, HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy. CSP forbids `unsafe-inline`. The bash script is for CI environments without a browser. Standard 11 front-end contribution.
 

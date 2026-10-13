@@ -1,9 +1,10 @@
 /**
  * Accessibility audit – axe-core against every page
  *
- * WCAG 2.2 AA is the floor (Standard 3 – everyone can use it). Anything below
- * AA fails the build. This suite runs axe on every page in its default state,
- * then on key error and interactive states.
+ * The WCAG version and level on the Design System accessibility page is the
+ * floor (Standard 3 – everyone can use it). Anything below it fails the build.
+ * This suite runs axe on every page in its default state, then on key error
+ * and interactive states.
  *
  * Requires:  @axe-core/playwright   (in package.json devDependencies)
  *
@@ -13,8 +14,9 @@
 import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
-// axe leaves `target-size` (2.5.8) off by default. `.options()` replaces any
-// options set before it, so it must come before `.withTags()`.
+// The tags match WCAG 2.2 AA, the version the Design System accessibility page
+// names today. axe leaves `target-size` (2.5.8) off by default. `.options()`
+// replaces any options set before it, so it must come before `.withTags()`.
 const axe = (page: Page) =>
   new AxeBuilder({ page })
     .options({ rules: { 'target-size': { enabled: true } } })
@@ -32,7 +34,7 @@ const pages = [
   { url: '/confirmation.html', name: 'Confirmation' },
 ];
 
-test.describe('WCAG 2.2 AA – every page, default state', () => {
+test.describe('WCAG A/AA – every page, default state', () => {
   for (const { url, name } of pages) {
     test(`${name} page has no axe violations`, async ({ page }) => {
       await page.goto(url);
@@ -47,7 +49,7 @@ test.describe('WCAG 2.2 AA – every page, default state', () => {
   }
 });
 
-test.describe('WCAG 2.2 AA – interactive states', () => {
+test.describe('WCAG A/AA – interactive states', () => {
   test('Context page passes axe with each option selected', async ({ page }) => {
     await page.goto('/context.html');
     for (const option of ['actively practising', 'working abroad temporarily', 'retired or only practising occasionally']) {

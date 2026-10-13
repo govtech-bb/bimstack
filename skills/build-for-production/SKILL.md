@@ -108,7 +108,7 @@ Each test:
 
 ### Accessibility (axe-core)
 
-A single suite that visits every page in every state (happy, error, completed) and runs axe with WCAG 2.2 AA rules – tags up to `wcag22aa`, with the `target-size` rule switched on, since axe leaves it off by default. Standard 3 floor. Anything below AA fails the build.
+A single suite that visits every page in every state (happy, error, completed) and runs axe against the WCAG version and level on the [Design System accessibility page](https://design-system.service.alpha.gov.bb/documentation/accessibility/) – tags up to that version (today `wcag22aa`), with the `target-size` rule switched on, since axe leaves it off by default. Standard 3 floor. Anything below AA fails the build.
 
 ### Security
 
@@ -196,7 +196,7 @@ Document any departure as an ADR.
 | Question | Default | Why |
 |---|---|---|
 | E2E tool | Playwright | Modern, fast, supports accessibility tests natively |
-| Accessibility tool | axe-core via Playwright | Industry standard, WCAG 2.2 AA rule coverage |
+| Accessibility tool | axe-core via Playwright | Industry standard, covers the WCAG A/AA rules that can be automated |
 | Load tool | k6 | Code-driven, modern, free; scales to peak Bajan volumes easily |
 | Security tool (front-end) | Bespoke header tests + OWASP ZAP config | Headers are the front-end's job; ZAP for DAST in CI |
 | Test naming | Behaviour-led (`doctor renews their licence end-to-end`) | Reads like documentation; Standard 4 in tests too |

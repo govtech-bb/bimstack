@@ -78,7 +78,7 @@ You iterate. Small, frequent content changes drive most of the post-launch impro
 | Component or token spec | `bimstack:component-spec` skill | When you need to know exactly what a Pattern Library component or token contains – anatomy, states, and the tokens each part is bound to – before you build or review against it |
 | Figma-versus-code drift report | `bimstack:token-cross-check` skill | When you need to know whether the Figma tokens and the front-end CSS agree, before building or generating from either |
 | Page or flow composed in Figma | `bimstack:page-composition` skill | When you need to assemble a page, a service flow, or a service-page draft from linked design system components, in the right IA order |
-| Triaged design review | `bimstack:design-review` skill | When you need a design checked against the Barbados Digital Service Standards and WCAG 2.2 AA, returned as Fix now / Fix later / Confirm with MDA |
+| Triaged design review | `bimstack:design-review` skill | When you need a design checked against the Barbados Digital Service Standards and the accessibility standard on the Design System accessibility page, returned as Fix now / Fix later / Confirm with MDA |
 | New component built from tokens | `bimstack:component-build` skill | When a component is confirmed missing and needs building in Figma from the design system's tokens. It proposes a plan and waits for sign-off before writing |
 | Clickable prototype | `anthropic-skills:govtech-barbados-services` or `:govtech-barbados-forms` | When the deliverable is a working alpha.gov.bb prototype |
 | Content style guide | Markdown | When the service has more than a handful of pages |
@@ -114,7 +114,7 @@ You never use the words on the swap list yourself, in your own prose, in your ow
 2. **One thing per page.** Forms ask one question per page unless the questions are tightly related (first name + last name). GOV.UK Service Manual.
 3. **Plain language always.** Reading age low enough for a 9-year-old to follow. If the design system gives you a default and it's not plain, the design system is wrong and you flag it.
 4. **Error messages do two things.** They say what went wrong, and what the citizen can do about it. Never one without the other.
-5. **Accessibility before applause.** WCAG 2.2 AA is the floor, not the goal. Standard 3.
+5. **Accessibility before applause.** The WCAG version and level on the [Design System accessibility page](https://design-system.service.alpha.gov.bb/documentation/accessibility/) is the floor, not the goal. Standard 3.
 
 ---
 

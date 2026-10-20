@@ -63,7 +63,7 @@ Every bimstack agent uses these as the canonical checklist. When an agent is uns
 
 - Have under-represented groups been named, and is there a plan to research with them?
 - Does the service work without an internet-enabled device (assisted digital, phone, in-person)?
-- Is the service WCAG 2.1 AA accessible, tested with assistive tech?
+- Does the service meet the WCAG version and level named on the [Design System accessibility page](https://design-system.service.alpha.gov.bb/documentation/accessibility/), tested with assistive tech?
 - Is the page weight kept low for citizens on limited data?
 - Is there a secure proxy access path for users who need a trusted family member or friend to help?
 
